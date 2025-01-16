@@ -1,8 +1,12 @@
-#   {{ cdk_application_name }}
+# {{ cdk_application_name }}
 
 [//]: # (TODO: Add the description of the CDK application here)
 
 **TODO:** _Add the description of the CDK application here._
+
+This app was generated from the
+[mihaly-farkas/copier-template-aws-cdk-app-python](https://github.com/mihaly-farkas/copier-template-aws-cdk-app-python)
+template using [Copier](https://copier.readthedocs.io/en/stable/).
 
 ## Prerequisites
 
@@ -26,6 +30,36 @@ After setting up your AWS CLI, you can deploy the CDK application by running the
 ```bash
 cdk deploy
 ```
+
+## Continuous Integration
+
+### Release Please Action
+
+This repository implements a release workflow using [Google APIs'](https://github.com/googleapis)
+[Release Please Action](https://github.com/googleapis/release-please-action). This action automatically maintains a
+[release branch](https://github.com/mihaly-farkas/aws-cdk-app-python-example/tree/release-please--branches--main)
+and opens a [pull request](https://github.com/mihaly-farkas/aws-cdk-app-python-example/pulls) if there are releasable
+changes in the `main` branch.
+
+To release the prepared changes, you need to do nothing, just merge the release pull request. The workflows will
+take care of the rest.
+
+For the Release Please action to work, it will be necessary to configure the environment with a (service) user
+token.<br>
+See the `${% raw %}{{ secrets.SERVICE_USER_CI_TOKEN }}{% endraw %}` setting in the
+[Continuous Integration](.github/workflows/continuous-integration.yaml) workflow file.
+
+You can generate a personal access token (PAT) for the service user in the GitHub web UI under your account
+settings.<br>
+See: [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
+Required scopes:
+
+* `repo`
+* `write:packages`
+
+Once you have the token, you can set up the repository. <br>
+See [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions#creating-secrets-for-a-repository)
 
 ## License <a name="License"></a>
 

@@ -18,17 +18,46 @@ cdk_application_name:
   type: str
   help: "What is the name of the AWS CDK application?"
 
-cdk_application_name_kebab_case:
+cdk_application_slug:
   type: str
   help: "What is the slug of the AWS CDK application?"
   default: "{{ cdk_application_name|lower|replace(' ', '-') }}"
 
+cdk_application_name_kebab_case:
+  type: str
+  help: "What is the name of the AWS CDK application in kebab-case format?"
+  default: "{{ cdk_application_name|lower|replace(' ', '-') }}"
+
 cdk_application_name_snake_case:
   type: str
-  help: "What is the snake_case name of the AWS CDK application?"
+  help: "What is the  name of the AWS CDK application in snake_case format?"
   default: "{{ cdk_application_name_kebab_case|replace('-', '_') }}"
 
 cdk_application_name_pascal_case:
   type: str
-  help: "What is the PascalCase name of the AWS CDK application?"
+  help: "What is the name of the AWS CDK application in PascalCase format?"
   default: "{{ cdk_application_name_kebab_case|replace('-', ' ')|title|replace(' ', '') }}"
+
+github_repository_owner:
+  type: str
+  help: "Who is the GitHub repository owner?"
+  default: "mihaly-farkas"
+
+github_repository_name:
+  type: str
+  help: "What is the name of the GitHub repository?"
+  default: "{{ cdk_application_slug }}"
+
+python_package_name:
+  type: str
+  help: "What is the name of the Python package?"
+  default: "{{ github_repository_owner }}.{{ cdk_application_slug }}"
+
+python_package_description:
+  type: str
+  help: "What is the short description of the Python package? (max 80 characters)"
+
+python_package_author_name:
+  type: str
+  help: "Who is the author of the Python package?"
+  default: "Mihaly Farkas"
