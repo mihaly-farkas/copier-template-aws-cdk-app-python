@@ -1,0 +1,34 @@
+_templates_suffix: .jinja2
+
+_exclude:
+  # The default _exclude settings minus the copier.yaml
+  # See: https://copier.readthedocs.io/en/stable/configuring/#exclude
+  - "copier.yaml"
+  - "copier.yml"
+  - "~*"
+  - "*.py[co]"
+  - "__pycache__"
+  - ".git"
+  - ".DS_Store"
+  - ".svn"
+
+  - "LICENSE.md"
+
+cdk_application_name:
+  type: str
+  help: "What is the name of the AWS CDK application?"
+
+cdk_application_name_kebab_case:
+  type: str
+  help: "What is the slug of the AWS CDK application?"
+  default: "{{ cdk_application_name|lower|replace(' ', '-') }}"
+
+cdk_application_name_snake_case:
+  type: str
+  help: "What is the snake_case name of the AWS CDK application?"
+  default: "{{ cdk_application_name_kebab_case|replace('-', '_') }}"
+
+cdk_application_name_pascal_case:
+  type: str
+  help: "What is the PascalCase name of the AWS CDK application?"
+  default: "{{ cdk_application_name_kebab_case|replace('-', ' ')|title|replace(' ', '') }}"

@@ -1,0 +1,20 @@
+import aws_cdk as core
+import aws_cdk.assertions as assertions
+
+from {{ cdk_application_name_snake_case }}.{{ cdk_application_name_snake_case }}_stack import {{ cdk_application_name_pascal_case }}Stack
+
+
+# example tests. To run these tests, uncomment this file along with the example
+# resource in
+
+# Test if the {{ cdk_application_name_snake_case }}/{{ cdk_application_name_snake_case }}_stack.py stack creates the log group with the expected properties
+def test_log_group_created():
+    app = core.App()
+    stack = {{ cdk_application_name_pascal_case }}Stack(app, "{{ cdk_application_name_kebab_case }}")
+    template = assertions.Template.from_stack(stack)
+
+    template.resource_count_is("AWS::Logs::LogGroup", 1)
+
+    template.has_resource_properties("AWS::Logs::LogGroup", {
+        "RetentionInDays": 1
+    })
