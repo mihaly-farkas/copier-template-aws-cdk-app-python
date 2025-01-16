@@ -1,3 +1,5 @@
+[![Continuous Integration](https://github.com/{{ github_repository_owner }}/{{ github_repository_name }}/actions/workflows/continuous-integration.yaml/badge.svg)](https://github.com/{{ github_repository_owner }}/{{ github_repository_name }}/actions/workflows/continuous-integration.yaml)
+
 # {{ cdk_application_name }}
 
 [//]: # (TODO: Add the description of the CDK application here)
@@ -37,8 +39,8 @@ cdk deploy
 
 This repository implements a release workflow using [Google APIs'](https://github.com/googleapis)
 [Release Please Action](https://github.com/googleapis/release-please-action). This action automatically maintains a
-[release branch](https://github.com/mihaly-farkas/aws-cdk-app-python-example/tree/release-please--branches--main)
-and opens a [pull request](https://github.com/mihaly-farkas/aws-cdk-app-python-example/pulls) if there are releasable
+[release branch](https://github.com/{{ github_repository_owner }}/{{ github_repository_name }}/tree/release-please--branches--main)
+and opens a [pull request](https://github.com/{{ github_repository_owner }}/{{ github_repository_name }}/pulls) if there are releasable
 changes in the `main` branch.
 
 To release the prepared changes, you need to do nothing, just merge the release pull request. The workflows will
